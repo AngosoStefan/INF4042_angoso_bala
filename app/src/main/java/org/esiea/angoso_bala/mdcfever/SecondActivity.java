@@ -85,7 +85,7 @@ public class SecondActivity extends AppCompatActivity {
             JSONObject obj = new JSONObject(json);
             JSONArray results = obj.getJSONArray("results");
 
-            JSONArray results_filtered = getCharactersBy("DC Comics", results);
+            JSONArray results_filtered = getCharactersBy("Marvel", results);
 
             return results_filtered;
 
