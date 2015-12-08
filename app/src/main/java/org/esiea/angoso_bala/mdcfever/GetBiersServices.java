@@ -3,7 +3,6 @@ package org.esiea.angoso_bala.mdcfever;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
-import android.nfc.Tag;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
@@ -48,7 +47,6 @@ public class GetBiersServices extends IntentService {
         Intent intent = new Intent(context, GetBiersServices.class);
         intent.setAction(ACTION_GET_ALL_BIERS);
         context.startService(intent);
-
     }
 
     /**
@@ -94,12 +92,12 @@ public class GetBiersServices extends IntentService {
         Log.d(TAG, "Thread:" + Thread.currentThread().getName());
         URL url = null;
         try {
-            url = new URL("http://binouze.fabrigli.fr/bieres.json");
+            url = new URL("http://www.comicvine.com/api/characters/?api_key=5432a36b9f8863afe084d12ae75ae89e3cf00383&field_list=name,publisher&format=json");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.connect();
             if (HttpURLConnection.HTTP_OK == conn.getResponseCode()) {
-                copyInputStreamToFile(conn.getInputStream(), new File(getCacheDir(), "bieres.json"));
+                copyInputStreamToFile(conn.getInputStream(), new File(getCacheDir(), "heroes.json"));
                 Log.d(TAG, "DOWNLOAD FINISHED FOR JSON BIERES!!!!!!!");
                 LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(SecondActivity.BIERS_UPDATE));
             }

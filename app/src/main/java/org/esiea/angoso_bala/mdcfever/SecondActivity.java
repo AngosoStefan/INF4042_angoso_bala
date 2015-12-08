@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.LocalBroadcastManager;
@@ -24,9 +25,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.util.List;
+import java.util.Scanner;
 
 
 public class SecondActivity extends AppCompatActivity {
@@ -68,13 +73,21 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public JSONArray getBiersFromFile() {
+        String json = null;
         try {
-            InputStream is = new FileInputStream(getCacheDir() + "/" + "bieres.json");
+            InputStream is = new FileInputStream(getCacheDir() + "/" + "heroes.json");
             byte[] buffer = new byte[is.available()];
             is.read(buffer);
             is.close();
 
-            return new JSONArray(new String(buffer, "UTF-8"));
+            json = new String(buffer, "UTF-8");
+
+            JSONObject obj = new JSONObject(json);
+            JSONArray results = obj.getJSONArray("results");
+
+            JSONArray results_filtered = getCharactersBy("DC Comics", results);
+
+            return results_filtered;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,6 +97,31 @@ public class SecondActivity extends AppCompatActivity {
             return new JSONArray();
         }
 
+    }
+
+    public JSONArray getCharactersBy(String str_publisher, JSONArray results) {
+        JSONArray array_filtered = new JSONArray();
+
+        int i,j=0;
+        for (i = 0; i < 100; i++) {
+            try {
+
+                JSONObject element = results.getJSONObject(i);
+                JSONObject publisher = element.getJSONObject("publisher");
+
+                if (publisher.getString("name").equals(str_publisher)) {
+                    JSONObject element_filtered = new JSONObject();
+                    element_filtered.put("name", element.getString("name"));
+                    element_filtered.put("publisher", publisher);
+                    array_filtered.put(element_filtered);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return array_filtered;
     }
 
     public class BierUpdate extends BroadcastReceiver {
@@ -106,7 +144,6 @@ public class SecondActivity extends AppCompatActivity {
 
         private JSONArray bieres;
 
-
         public BiersAdapter(JSONArray bieres) {
             this.bieres = bieres;
         }
@@ -114,6 +151,7 @@ public class SecondActivity extends AppCompatActivity {
         @Override
         public BiersAdapter.BierHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater li = LayoutInflater.from(parent.getContext());
+
             View v = li.inflate(R.layout.rv_bier_element, parent, false);
 
             BierHolder bh = new BierHolder(v);
@@ -126,6 +164,7 @@ public class SecondActivity extends AppCompatActivity {
             try {
                 String str_name;
                 JSONObject jo = bieres.getJSONObject(position);
+
                 str_name = jo.getString("name");
 
                 holder.name.setText(str_name);
