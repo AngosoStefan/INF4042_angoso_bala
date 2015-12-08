@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">MDCFever</string>
+    <string name="app_name">Tuto</string>
     <string name="action_settings">Settings</string>
+    <string name="toast_button">Toast Button</string>
+    <string name="pop_up_button">PopUp Button</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="activity2_button">Activity 2</string>
+    <string name="title_activity_read_file">ReadFile</string>
 </resources>
