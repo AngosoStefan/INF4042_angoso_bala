@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,43 +47,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//Association des élements graph à leurs équivalent en Java
-        Button b_toast = (Button) findViewById(R.id.b_toast);
-
-//On peut utiliser l'action click
-        b_toast.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CharSequence text = "Toast Test working !";
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-                toast.setGravity(Gravity.TOP | Gravity.LEFT, 0, 0);
-            }
-        });
-
-        Button b_popup = (Button) findViewById(R.id.b_popup);
-        b_popup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Dialog dialog = new Dialog(context);
-                dialog.setTitle("Popup Test");
 
 
-                dialog.show();
-
-            }
-        });
-
-/*dpd = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-    @Override
-    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        //tv_hw.setText
-    }
-},2015 ,11,26);*/
-
-        Button b_activity2 = (Button) findViewById(R.id.b_activity2);
-        b_activity2.setOnClickListener(new View.OnClickListener() {
+        Button b_marvel = (Button) findViewById(R.id.b_marvel);
+        b_marvel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SecondActivity.class);
@@ -90,6 +58,50 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ImageButton imageButton = (ImageButton) findViewById(R.id.imageButton1);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                /*Toast.makeText(MainActivity.this,
+                        "You have joined the MARVEL Team!", Toast.LENGTH_SHORT).show();*/
+
+                Intent intent = new Intent(context, SecondActivity.class);
+                startActivity(intent);
+
+            }
+
+        });
+
+
+
+        Button b_dc = (Button) findViewById(R.id.b_marvel);
+        b_marvel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ThirdActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton imageButton2 = (ImageButton) findViewById(R.id.imageButton2);
+
+        imageButton2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                /*Toast.makeText(MainActivity.this,
+                        "You have joined the DC Team!", Toast.LENGTH_SHORT).show();*/
+
+                Intent intent = new Intent(context, ThirdActivity.class);
+                startActivity(intent);
+
+            }
+
+        });
 
     }
 
