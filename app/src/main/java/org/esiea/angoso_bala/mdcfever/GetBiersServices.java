@@ -92,7 +92,7 @@ public class GetBiersServices extends IntentService {
         Log.d(TAG, "Thread:" + Thread.currentThread().getName());
         URL url = null;
         try {
-            url = new URL("http://www.comicvine.com/api/characters/?api_key=5432a36b9f8863afe084d12ae75ae89e3cf00383&field_list=name,publisher&format=json&offset=99");
+            url = new URL("http://www.comicvine.com/api/characters/?api_key=5432a36b9f8863afe084d12ae75ae89e3cf00383&field_list=name,publisher,image&format=json&offset=670");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.connect();

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.LocalBroadcastManager;
@@ -13,12 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,16 +26,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.Charset;
-import java.util.List;
-import java.util.Scanner;
 
-
-public class SecondActivity extends AppCompatActivity {
+public class ThirdActivity extends AppCompatActivity {
 
     final Context context = this;
     public static final String BIERS_UPDATE = "com.octip.cours.inf4042_11.BIERS_UPDATE";
@@ -62,7 +54,7 @@ public class SecondActivity extends AppCompatActivity {
 
         GetBiersServices.startActionBiers(context);
 
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_third);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -121,7 +113,7 @@ public class SecondActivity extends AppCompatActivity {
 
 
 
-            JSONArray results_filtered = getCharactersBy("Marvel", results);
+            JSONArray results_filtered = getCharactersBy("DC Comics", results);
 
             return results_filtered;
 
