@@ -118,9 +118,7 @@ public class SecondActivity extends AppCompatActivity {
 
             JSONObject obj = new JSONObject(json);
             JSONArray results = obj.getJSONArray("results");
-
-
-
+            
             JSONArray results_filtered = getCharactersBy("Marvel", results);
 
             return results_filtered;
@@ -167,11 +165,11 @@ public class SecondActivity extends AppCompatActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            CharSequence text = "File downloaded !";
+            CharSequence text = context.getString(R.string.dl_file);
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
-            toast.setGravity(Gravity.TOP | Gravity.LEFT, 0, 0);
+            toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
 
             BiersAdapter ba = (BiersAdapter) getRv_biere().getAdapter();
             ba.setNewBieres();
@@ -194,8 +192,6 @@ public class SecondActivity extends AppCompatActivity {
             View v = li.inflate(R.layout.rv_bier_element, parent, false);
 
             BierHolder bh = new BierHolder(v);
-
-
 
             return bh;
         }

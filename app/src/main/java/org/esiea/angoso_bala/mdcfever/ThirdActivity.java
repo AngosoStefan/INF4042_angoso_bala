@@ -61,7 +61,6 @@ public class ThirdActivity extends AppCompatActivity {
         IntentFilter intentFilter = new IntentFilter(BIERS_UPDATE);
         LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(), intentFilter);
 
-
         rv_biere = (RecyclerView) findViewById(R.id.rv_biere);
         rv_biere.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
@@ -159,17 +158,16 @@ public class ThirdActivity extends AppCompatActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            CharSequence text = "File downloaded !";
+            CharSequence text = context.getString(R.string.dl_file);
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
-            toast.setGravity(Gravity.TOP | Gravity.LEFT, 0, 0);
+            toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
 
             BiersAdapter ba = (BiersAdapter) getRv_biere().getAdapter();
             ba.setNewBieres();
         }
     }
-
 
     private class BiersAdapter extends RecyclerView.Adapter<BiersAdapter.BierHolder> {
 
@@ -186,8 +184,6 @@ public class ThirdActivity extends AppCompatActivity {
             View v = li.inflate(R.layout.rv_bier_element, parent, false);
 
             BierHolder bh = new BierHolder(v);
-
-
 
             return bh;
         }

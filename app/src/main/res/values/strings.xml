@@ -1,15 +1,22 @@
 <resources>
     <string name="app_name">MDCFever</string>
+
+    <string name="welcome">FirstActivity</string>
     <string name="action_settings">Settings</string>
     <string name="toast_button">Toast Button</string>
     <string name="pop_up_button">PopUp Button</string>
-    <string name="title_activity_second">SecondActivity</string>
-    <string name="Marvel">Marvel</string>
-    <string name="DC">DC Comics</string>
-    <string name="Choice">CHOOSE YOUR SIDE</string>
-    <string name="Welcome">Welcome to MDCFever</string>
+
+    <string name="Marvel" translatable="false">Marvel</string>
+    <string name="DC" translatable="false">DC Comics</string>
+    <string name="choice">CHOOSE YOUR SIDE</string>
+
     <string name="title_activity_read_file">ReadFile</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_activity_dc">DCActivity</string>
+
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="marvel_list">Marvel heroes list</string>
+    <string name="dl_file">File DL</string>
+
     <string name="title_activity_third">ThirdActivity</string>
+    <string name="dc_list">DC Comics heroes list</string>
+
 </resources>

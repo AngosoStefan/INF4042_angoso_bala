@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MDCFever</string>
+    <string name="Choice">Faites votre choix</string>
+    <string name="action_settings">Options</string>
+    <string name="pop_up_button">Bouton PopUp</string>
+    <string name="title_activity_second">Héros Marvel</string>
+    <string name="title_activity_third">Héros DC Comics</string>
+    <string name="welcome">Bienvenue sur MDCFever</string>
+    <string name="choice">Faites votre choix</string>
+    <string name="dc_list">Liste des héros DC Comics</string>
+    <string name="marvel_list">Liste des héros Marvel</string>
+    <string name="toast_button">Bouton toast</string>
+    <string name="dl_file">La liste est à jour</string>
+</resources>

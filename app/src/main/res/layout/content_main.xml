@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/d_blue"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="org.esiea.angoso_bala.mdcfever.MainActivity">
+    tools:context="org.esiea.angoso_bala.mdcfever.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <ImageView
@@ -20,9 +20,9 @@
         android:scaleType="fitXY"
         android:src="@mipmap/banniere"
         android:layout_above="@+id/textView4"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="32dp" />
+        android:layout_marginBottom="32dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:id="@+id/imageButton1"
@@ -46,8 +46,6 @@
         android:layout_alignTop="@+id/imageButton1"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
-
-
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -81,22 +79,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/Choice"
+        android:text="@string/choice"
         android:id="@+id/textView4"
         android:textColor="#8FBDD5"
         android:layout_above="@+id/imageButton1"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="54dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/Welcome"
-        android:id="@+id/textView5"
-        android:textColor="#8FBDD5"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/textView4"
-        android:layout_alignEnd="@+id/textView4" />
 
 </RelativeLayout>
