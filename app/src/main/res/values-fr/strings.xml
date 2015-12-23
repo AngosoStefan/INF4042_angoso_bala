@@ -12,4 +12,22 @@
     <string name="marvel_list">Liste des héros Marvel</string>
     <string name="toast_button">Bouton toast</string>
     <string name="dl_file">La liste est à jour</string>
+    <string name="about">A propos</string>
+    <string name="about_content">
+        Cette application a été réalisée par Stefan ANGOSO et Stéphane BALA.\n\n
+        Elle s\'inscrit dans le cadre du cours de Programmation mobile.\n
+        Le thème principal est le monde des comics.\n\n
+        Nous avons mis en place :\n
+            - Boutons\n
+            - Images\n
+            - Traductions EN/FR\n
+            - Intent\n
+            - BroadcastReceiver\n
+            - IntentService\n
+            - RecyclerView\n
+            - Toast\n
+            - AlertDialog\n\n
+        Cliquez sur OK pour revenir au menu
+    </string>
+    <string name="title_activity_read_file">LectureFichier</string>
 </resources>

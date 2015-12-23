@@ -1,24 +1,18 @@
 package org.esiea.angoso_bala.mdcfever;
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
+import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -80,9 +74,26 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(context, ThirdActivity.class);
                 startActivity(intent);
-
             }
 
+        });
+
+        Button b_about = (Button)findViewById(R.id.about);
+
+        b_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                alertDialog.setTitle("About");
+                alertDialog.setMessage(context.getString(R.string.about_content));
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+            }
         });
 
     }

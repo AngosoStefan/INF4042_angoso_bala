@@ -86,4 +86,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="54dp" />
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about"
+        android:id="@+id/about"
+        android:layout_below="@+id/b_marvel"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
