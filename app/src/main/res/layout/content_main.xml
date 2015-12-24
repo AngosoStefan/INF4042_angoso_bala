@@ -19,10 +19,11 @@
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
         android:src="@mipmap/banniere"
-        android:layout_above="@+id/textView4"
-        android:layout_marginBottom="32dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
         android:id="@+id/imageButton1"
@@ -31,8 +32,7 @@
         android:scaleType="fitXY"
         android:src="@mipmap/deadpool"
         android:background="@color/d_blue"
-        android:layout_marginBottom="97dp"
-        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -47,34 +47,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Marvel"
-        android:id="@+id/b_marvel"
-        android:background="@color/d_blue"
-        android:textColor="#8FBDD5"
-        android:layout_alignBottom="@+id/imageButton1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/imageButton1"
-        android:layout_alignEnd="@+id/imageButton1" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/DC"
-        android:id="@+id/b_dc"
-        android:background="@color/d_blue"
-        android:textColor="#8FBDD5"
-        android:layout_alignBottom="@+id/imageButton2"
-        android:layout_alignLeft="@+id/imageButton2"
-        android:layout_alignStart="@+id/imageButton2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,9 +54,9 @@
         android:text="@string/choice"
         android:id="@+id/textView4"
         android:textColor="#8FBDD5"
-        android:layout_above="@+id/imageButton1"
+        android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="54dp" />
+        android:layout_marginTop="61dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -92,8 +64,37 @@
         android:layout_height="wrap_content"
         android:text="@string/about"
         android:id="@+id/about"
-        android:layout_below="@+id/b_marvel"
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="67dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="MARVEL"
+        android:id="@+id/m_title"
+        android:layout_below="@+id/imageButton1"
+        android:layout_alignRight="@+id/imageButton1"
+        android:layout_alignEnd="@+id/imageButton1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="DC Comics"
+        android:id="@+id/dc_title"
+        android:gravity="center"
+        android:layout_below="@+id/imageButton2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/imageButton2"
+        android:layout_alignStart="@+id/imageButton2"
+        android:textStyle="bold"
+        android:textColor="#8FBDD5" />
 
 </RelativeLayout>

@@ -29,4 +29,6 @@
             - Toast\n
             - AlertDialog\n\n
         Press OK to go back to the menu</string>
+    <string name="dc_choice">You have joined the DC Comics team !</string>
+    <string name="m_choice">You have joined the Marvel team !</string>
 </resources>

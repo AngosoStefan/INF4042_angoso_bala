@@ -30,4 +30,6 @@
         Cliquez sur OK pour revenir au menu
     </string>
     <string name="title_activity_read_file">LectureFichier</string>
+    <string name="dc_choice">Vous avez rejoint la team DC Comics !</string>
+    <string name="m_choice">Vous avez rejoint la team Marvel !</string>
 </resources>

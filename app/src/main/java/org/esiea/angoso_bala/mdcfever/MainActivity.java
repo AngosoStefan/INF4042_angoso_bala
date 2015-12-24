@@ -1,6 +1,5 @@
 package org.esiea.angoso_bala.mdcfever;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,11 +7,13 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -25,17 +26,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /* Barre du haut */
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button b_marvel = (Button) findViewById(R.id.b_marvel);
-        b_marvel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, SecondActivity.class);
-                startActivity(intent);
-            }
-        });
+        /* Zone Marvel */
 
         ImageButton imageButton = (ImageButton) findViewById(R.id.imageButton1);
 
@@ -43,24 +39,18 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
-                /*Toast.makeText(MainActivity.this,
-                        "You have joined the MARVEL Team!", Toast.LENGTH_SHORT).show();*/
+                CharSequence text = context.getString(R.string.m_choice);
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
 
                 Intent intent = new Intent(context, SecondActivity.class);
                 startActivity(intent);
             }
-
         });
 
-        Button b_dc = (Button) findViewById(R.id.b_marvel);
-        b_marvel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, ThirdActivity.class);
-                startActivity(intent);
-            }
-        });
+        /* Zone DC comics */
 
         ImageButton imageButton2 = (ImageButton) findViewById(R.id.imageButton2);
 
@@ -68,15 +58,18 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
-                /*Toast.makeText(MainActivity.this,
-                        "You have joined the DC Team!", Toast.LENGTH_SHORT).show();*/
+                CharSequence text = context.getString(R.string.dc_choice);
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
 
                 Intent intent = new Intent(context, ThirdActivity.class);
                 startActivity(intent);
             }
-
         });
+
+        /* Bouton about */
 
         Button b_about = (Button)findViewById(R.id.about);
 

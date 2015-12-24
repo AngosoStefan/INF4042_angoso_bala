@@ -5,7 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="choice">CHOOSE YOUR SIDE</string>
     <string name="about">Dialog</string>
-
+    <string name="m_choice">Marvel choice</string>
+    <string name="dc_choice">DC Comics choice</string>
 
     <string name="Marvel" translatable="false">Marvel</string>
     <string name="DC" translatable="false">DC Comics</string>
