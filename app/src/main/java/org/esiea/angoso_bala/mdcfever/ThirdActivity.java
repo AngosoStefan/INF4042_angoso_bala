@@ -1,10 +1,13 @@
 package org.esiea.angoso_bala.mdcfever;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -45,9 +48,9 @@ public class ThirdActivity extends AppCompatActivity {
         this.rv_biere = rv_biere;
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         GetBiersServices.startActionBiers(context);
@@ -68,33 +71,6 @@ public class ThirdActivity extends AppCompatActivity {
         rv_biere.setAdapter(ba);
     }
 
-
-
-
-    /*@Override
-    public void onClick(View v) {
-        // define the button that invoked the listener by id
-        switch (v.getId()) {
-            case R.id.b_dc:
-                // ОК button
-                Toast.makeText(SecondActivity.this,
-                        "Yes!", Toast.LENGTH_SHORT).show();
-                comics = "DC Comics";
-                break;
-            case R.id.b_marvel:
-                // Cancel button
-                Toast.makeText(SecondActivity.this,
-                        "No!", Toast.LENGTH_SHORT).show();
-                comics = "Marvel";
-                break;
-        }
-    }*/
-
-
-
-
-
-
     public JSONArray getBiersFromFile() {
         String json = null;
         try {
@@ -107,8 +83,6 @@ public class ThirdActivity extends AppCompatActivity {
 
             JSONObject obj = new JSONObject(json);
             JSONArray results = obj.getJSONArray("results");
-
-
 
             JSONArray results_filtered = getCharactersBy("DC Comics", results);
 
@@ -125,9 +99,10 @@ public class ThirdActivity extends AppCompatActivity {
     }
 
     public JSONArray getCharactersBy(String str_publisher, JSONArray results) {
+
         JSONArray array_filtered = new JSONArray();
 
-        int i,j=0;
+        int i, j = 0;
         for (i = 0; i < 100; i++) {
             try {
 
@@ -156,11 +131,17 @@ public class ThirdActivity extends AppCompatActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            CharSequence text = context.getString(R.string.dl_file);
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-            toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
+
+            Notification notification = new NotificationCompat.Builder(getApplicationContext())
+                    .setTicker(context.getString(R.string.notif_title))
+                    .setSmallIcon(android.R.drawable.ic_menu_report_image)
+                    .setContentTitle(context.getString(R.string.notif_title))
+                    .setContentText(context.getString(R.string.notif_content))
+                    .setAutoCancel(true)
+                    .build();
+
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.notify(0, notification);
 
             BiersAdapter ba = (BiersAdapter) getRv_biere().getAdapter();
             ba.setNewBieres();

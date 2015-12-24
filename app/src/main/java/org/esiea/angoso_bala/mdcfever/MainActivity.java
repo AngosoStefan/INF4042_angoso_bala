@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         /* Bouton about */
 
-        Button b_about = (Button)findViewById(R.id.about);
+        Button b_about = (Button) findViewById(R.id.about);
 
         b_about.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
-
     }
 
     @Override

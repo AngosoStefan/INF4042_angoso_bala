@@ -3,24 +3,27 @@
 
     <string name="welcome">FirstActivity</string>
     <string name="action_settings">Settings</string>
+
     <string name="choice">CHOOSE YOUR SIDE</string>
-    <string name="about">Dialog</string>
     <string name="m_choice">Marvel choice</string>
     <string name="dc_choice">DC Comics choice</string>
 
+    <string name="about">Dialog</string>
+
     <string name="Marvel" translatable="false">Marvel</string>
     <string name="DC" translatable="false">DC Comics</string>
+
+    <string name="notif_title">Notification title</string>
+    <string name="notif_content">Notification content</string>
 
     <string name="title_activity_read_file">ReadFile</string>
 
     <string name="title_activity_second">SecondActivity</string>
     <string name="marvel_list">Marvel heroes list</string>
-    <string name="dl_file">File DL</string>
 
     <string name="title_activity_third">ThirdActivity</string>
     <string name="dc_list">DC Comics heroes list</string>
-    <string name="about_content">About content area</string>
-    <string name="Choice">Subtitle main activity</string>
+
     <string name="toast_button">Toast</string>
     <string name="pop_up_button">Popup</string>
 

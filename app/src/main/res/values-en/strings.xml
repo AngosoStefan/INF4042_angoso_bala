@@ -11,13 +11,11 @@
     <string name="marvel_list">Marvel heroes list</string>
     <string name="action_settings">Settings</string>
     <string name="toast_button">Toast Button</string>
-    <string name="dl_file">List has been updated</string>
     <string name="about">About</string>
     <string name="title_activity_read_file">Readfile</string>
     <string name="about_content">This app has been created by Stefan ANGOSO and Stéphane BALA.\n\n
         The project comes from the Mobile development class.\n
         Our main subject is the world of comics\n\n
-
         We have implemented and used:\n
             - Buttons\n
             - Pictures\n
@@ -27,8 +25,11 @@
             - IntentService\n
             - RecyclerView\n
             - Toast\n
+            - Notification\n
             - AlertDialog\n\n
         Press OK to go back to the menu</string>
     <string name="dc_choice">You have joined the DC Comics team !</string>
     <string name="m_choice">You have joined the Marvel team !</string>
+    <string name="notif_content">The characters list has been updated</string>
+    <string name="notif_title">MDCFever notification</string>
 </resources>

@@ -11,7 +11,6 @@
     <string name="dc_list">Liste des héros DC Comics</string>
     <string name="marvel_list">Liste des héros Marvel</string>
     <string name="toast_button">Bouton toast</string>
-    <string name="dl_file">La liste est à jour</string>
     <string name="about">A propos</string>
     <string name="about_content">
         Cette application a été réalisée par Stefan ANGOSO et Stéphane BALA.\n\n
@@ -26,10 +25,13 @@
             - IntentService\n
             - RecyclerView\n
             - Toast\n
+            - Notification\n
             - AlertDialog\n\n
         Cliquez sur OK pour revenir au menu
     </string>
     <string name="title_activity_read_file">LectureFichier</string>
     <string name="dc_choice">Vous avez rejoint la team DC Comics !</string>
     <string name="m_choice">Vous avez rejoint la team Marvel !</string>
+    <string name="notif_content">La liste des personnages a été mise à jour</string>
+    <string name="notif_title">Notification MDCFever</string>
 </resources>
