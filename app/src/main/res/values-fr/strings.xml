@@ -8,8 +8,6 @@
     <string name="title_activity_third">Héros DC Comics</string>
     <string name="welcome">Bienvenue sur MDCFever</string>
     <string name="choice">Faites votre choix</string>
-    <string name="dc_list">Liste des héros DC Comics</string>
-    <string name="marvel_list">Liste des héros Marvel</string>
     <string name="toast_button">Bouton toast</string>
     <string name="about">A propos</string>
     <string name="about_content">
