@@ -26,9 +26,9 @@
         android:layout_height="0dp"
         android:layout_alignParentBottom="true"
         android:layout_below="@id/textView2"
-        android:id="@+id/rv_biere" />
+        android:id="@+id/rv_heroes" />
 
-    <include layout="@layout/rv_bier_element" />
+    <include layout="@layout/rv_heroes_element" />
 
 </RelativeLayout>
 

@@ -25,17 +25,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SecondActivity"
+            android:name=".MarvelActivity"
             android:label="@string/title_activity_second"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service
-            android:name=".GetBiersServices"
+            android:name=".GetHeroesServices"
             android:exported="false" />
 
         <activity
-            android:name=".ThirdActivity"
+            android:name=".DCActivity"
             android:label="@string/title_activity_third"
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"

@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 toast.show();
                 toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
 
-                Intent intent = new Intent(context, SecondActivity.class);
+                Intent intent = new Intent(context, MarvelActivity.class);
                 startActivity(intent);
             }
         });
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 toast.show();
                 toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 0, 0);
 
-                Intent intent = new Intent(context, ThirdActivity.class);
+                Intent intent = new Intent(context, DCActivity.class);
                 startActivity(intent);
             }
         });

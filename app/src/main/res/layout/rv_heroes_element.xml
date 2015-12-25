@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rv_bier_element_name"
+        android:id="@+id/rv_heroes_element_name"
         android:textColor="@color/l_blue"
         android:layout_gravity="center_horizontal" />
 

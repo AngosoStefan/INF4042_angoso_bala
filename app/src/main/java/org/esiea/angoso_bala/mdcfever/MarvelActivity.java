@@ -13,13 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -31,47 +29,71 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class ThirdActivity extends AppCompatActivity {
+
+public class MarvelActivity extends AppCompatActivity {
 
     final Context context = this;
-    public static final String BIERS_UPDATE = "com.octip.cours.inf4042_11.BIERS_UPDATE";
-    public static final String TAG = "GetBiersServices";
-    private RecyclerView rv_biere;
+    public static final String HEROES_UPDATE = "com.octip.cours.inf4042_11.HEROES_UPDATE";
+    public static final String TAG = "GetHeroesServices";
+    private RecyclerView rv_heroes;
 
     public String comics;
 
-    public RecyclerView getRv_biere() {
-        return rv_biere;
+    public RecyclerView getRv_heroes() {
+        return rv_heroes;
     }
 
-    public void setRv_biere(RecyclerView rv_biere) {
-        this.rv_biere = rv_biere;
+    public void setRv_heroes(RecyclerView rv_heroes) {
+        this.rv_heroes = rv_heroes;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
-        GetBiersServices.startActionBiers(context);
+        GetHeroesServices.startActionHeroes(context);
 
-        setContentView(R.layout.activity_third);
+        setContentView(R.layout.activity_second);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        IntentFilter intentFilter = new IntentFilter(BIERS_UPDATE);
-        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(), intentFilter);
+        IntentFilter intentFilter = new IntentFilter(HEROES_UPDATE);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new HeroesUpdate(), intentFilter);
 
-        rv_biere = (RecyclerView) findViewById(R.id.rv_biere);
-        rv_biere.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        rv_heroes = (RecyclerView) findViewById(R.id.rv_heroes);
+        rv_heroes.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        JSONArray bieres = getBiersFromFile();
+        JSONArray heroes = getHeroesFromFile();
 
-        BiersAdapter ba = new BiersAdapter(bieres);
-        rv_biere.setAdapter(ba);
+        HeroesAdapter ba = new HeroesAdapter(heroes);
+        rv_heroes.setAdapter(ba);
     }
 
-    public JSONArray getBiersFromFile() {
+
+
+
+    /*@Override
+    public void onClick(View v) {
+        // define the button that invoked the listener by id
+        switch (v.getId()) {
+            case R.id.b_dc:
+                // ОК button
+                Toast.makeText(MarvelActivity.this,
+                        "Yes!", Toast.LENGTH_SHORT).show();
+                comics = "DC Comics";
+                break;
+            case R.id.b_marvel:
+                // Cancel button
+                Toast.makeText(MarvelActivity.this,
+                        "No!", Toast.LENGTH_SHORT).show();
+                comics = "Marvel";
+                break;
+        }
+    }*/
+
+
+    public JSONArray getHeroesFromFile() {
         String json = null;
         try {
             InputStream is = new FileInputStream(getCacheDir() + "/" + "heroes.json");
@@ -84,7 +106,7 @@ public class ThirdActivity extends AppCompatActivity {
             JSONObject obj = new JSONObject(json);
             JSONArray results = obj.getJSONArray("results");
 
-            JSONArray results_filtered = getCharactersBy("DC Comics", results);
+            JSONArray results_filtered = getCharactersBy("Marvel", results);
 
             return results_filtered;
 
@@ -99,7 +121,6 @@ public class ThirdActivity extends AppCompatActivity {
     }
 
     public JSONArray getCharactersBy(String str_publisher, JSONArray results) {
-
         JSONArray array_filtered = new JSONArray();
 
         int i, j = 0;
@@ -127,7 +148,7 @@ public class ThirdActivity extends AppCompatActivity {
         return array_filtered;
     }
 
-    public class BierUpdate extends BroadcastReceiver {
+    public class HeroesUpdate extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -143,36 +164,36 @@ public class ThirdActivity extends AppCompatActivity {
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             notificationManager.notify(0, notification);
 
-            BiersAdapter ba = (BiersAdapter) getRv_biere().getAdapter();
-            ba.setNewBieres();
+            HeroesAdapter ba = (HeroesAdapter) getRv_heroes().getAdapter();
+            ba.setNewHeroes();
         }
     }
 
-    private class BiersAdapter extends RecyclerView.Adapter<BiersAdapter.BierHolder> {
+    private class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.HeroesHolder> {
 
-        private JSONArray bieres;
+        private JSONArray heroes;
 
-        public BiersAdapter(JSONArray bieres) {
-            this.bieres = bieres;
+        public HeroesAdapter(JSONArray heroes) {
+            this.heroes = heroes;
         }
 
         @Override
-        public BiersAdapter.BierHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public HeroesAdapter.HeroesHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater li = LayoutInflater.from(parent.getContext());
 
-            View v = li.inflate(R.layout.rv_bier_element, parent, false);
+            View v = li.inflate(R.layout.rv_heroes_element, parent, false);
 
-            BierHolder bh = new BierHolder(v);
+            HeroesHolder bh = new HeroesHolder(v);
 
             return bh;
         }
 
         @Override
-        public void onBindViewHolder(BiersAdapter.BierHolder holder, int position) {
+        public void onBindViewHolder(HeroesAdapter.HeroesHolder holder, int position) {
             try {
                 String str_name;
                 String str_imageURL;
-                JSONObject jo = bieres.getJSONObject(position);
+                JSONObject jo = heroes.getJSONObject(position);
 
                 str_name = jo.getString("name");
 
@@ -189,25 +210,25 @@ public class ThirdActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return bieres.length();
+            return heroes.length();
         }
 
-        public void setNewBieres() {
-            bieres = getBiersFromFile();
+        public void setNewHeroes() {
+            heroes = getHeroesFromFile();
             notifyDataSetChanged();
         }
 
 
-        public class BierHolder extends RecyclerView.ViewHolder {
+        public class HeroesHolder extends RecyclerView.ViewHolder {
 
             public TextView name;
             public ImageView picture;
 
 
-            public BierHolder(View v) {
+            public HeroesHolder(View v) {
                 super(v);
 
-                name = (TextView) v.findViewById(R.id.rv_bier_element_name);
+                name = (TextView) v.findViewById(R.id.rv_heroes_element_name);
                 picture = (ImageView) v.findViewById(R.id.picture);
             }
 

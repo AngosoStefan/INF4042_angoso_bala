@@ -23,17 +23,17 @@ import java.net.URL;
  * TODO: Customize class - update intent actions, extra parameters and static
  * helper methods.
  */
-public class GetBiersServices extends IntentService {
-    public static final String TAG = "GetBiersServices";
+public class GetHeroesServices extends IntentService {
+    public static final String TAG = "GetHeroesServices";
 
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
-    private static final String ACTION_GET_ALL_BIERS = "org.esiea.angoso_bala.mdcfever.action.bier";
+    private static final String ACTION_GET_ALL_HEROES = "org.esiea.angoso_bala.mdcfever.action.heroes";
 
     // TODO: Rename parameters
 
 
-    public GetBiersServices() {
-        super("GetBiersServices");
+    public GetHeroesServices() {
+        super("GetHeroesServices");
     }
 
     /**
@@ -43,9 +43,9 @@ public class GetBiersServices extends IntentService {
      * @see IntentService
      */
 
-    public static void startActionBiers(Context context) {
-        Intent intent = new Intent(context, GetBiersServices.class);
-        intent.setAction(ACTION_GET_ALL_BIERS);
+    public static void startActionHeroes(Context context) {
+        Intent intent = new Intent(context, GetHeroesServices.class);
+        intent.setAction(ACTION_GET_ALL_HEROES);
         context.startService(intent);
     }
 
@@ -57,7 +57,7 @@ public class GetBiersServices extends IntentService {
      */
     // TODO: Customize helper method
     public static void startActionBaz(Context context) {
-        Intent intent = new Intent(context, GetBiersServices.class);
+        Intent intent = new Intent(context, GetHeroesServices.class);
         context.startService(intent);
     }
 
@@ -65,8 +65,8 @@ public class GetBiersServices extends IntentService {
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
             final String action = intent.getAction();
-            if (ACTION_GET_ALL_BIERS.equals(action)) {
-                handleActionBiers();
+            if (ACTION_GET_ALL_HEROES.equals(action)) {
+                handleActionHeroes();
             }
         }
     }
@@ -88,7 +88,7 @@ public class GetBiersServices extends IntentService {
         }
     }
 
-    private void handleActionBiers() {
+    private void handleActionHeroes() {
         Log.d(TAG, "Thread:" + Thread.currentThread().getName());
         URL url = null;
         try {
@@ -98,8 +98,8 @@ public class GetBiersServices extends IntentService {
             conn.connect();
             if (HttpURLConnection.HTTP_OK == conn.getResponseCode()) {
                 copyInputStreamToFile(conn.getInputStream(), new File(getCacheDir(), "heroes.json"));
-                Log.d(TAG, "DOWNLOAD FINISHED FOR JSON BIERES !");
-                LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(SecondActivity.BIERS_UPDATE));
+                Log.d(TAG, "DOWNLOAD FINISHED FOR JSON HEROES !");
+                LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(MarvelActivity.HEROES_UPDATE));
             }
 
         } catch (MalformedURLException e) {
