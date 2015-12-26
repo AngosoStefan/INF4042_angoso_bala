@@ -26,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /* Barre du haut */
+        /* Barre de titre */
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /* Zone Marvel */
+        /* Image de personnage Marvel cliquable -> intent vers MarvelActivity*/
 
         ImageButton imageButton = (ImageButton) findViewById(R.id.imageButton1);
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /* Zone DC comics */
+        /* Image de personnage DC Comics cliquable -> intent vers DCActivity*/
 
         ImageButton imageButton2 = (ImageButton) findViewById(R.id.imageButton2);
 
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /* Bouton about */
+        /* Bouton about, boite de dialogue : projet et implémentations */
 
         Button b_about = (Button) findViewById(R.id.about);
 
@@ -90,18 +90,17 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /* ! Le menu ne sera pas utilisé ! */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-// Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-// Handle action bar item clicks here. The action bar will
-// automatically handle clicks on the Home/Up button, so long
-// as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         return super.onOptionsItemSelected(item);

@@ -51,17 +51,28 @@ public class DCActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
+        /* On lance le téléchargement */
+
         GetHeroesServices.startActionHeroes(context);
 
         setContentView(R.layout.activity_third);
+
+        /* Barre de titre */
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        /* Gestion de la réception */
 
         IntentFilter intentFilter = new IntentFilter(HEROES_UPDATE);
         LocalBroadcastManager.getInstance(this).registerReceiver(new HeroesUpdate(), intentFilter);
 
+        /* Gestion du recyclerview */
+
         rv_heroes = (RecyclerView) findViewById(R.id.rv_heroes);
         rv_heroes.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        /* On crée un JSONArray à partir du fichier */
 
         JSONArray heroes = getHeroesFromFile();
 
@@ -82,6 +93,8 @@ public class DCActivity extends AppCompatActivity {
             JSONObject obj = new JSONObject(json);
             JSONArray results = obj.getJSONArray("results");
 
+            /* Nous filtrons les résultats non pas depuis le site, mais en JAVA : on ne garde que DC Comics*/
+
             JSONArray results_filtered = getCharactersBy("DC Comics", results);
 
             return results_filtered;
@@ -95,6 +108,8 @@ public class DCActivity extends AppCompatActivity {
         }
 
     }
+
+    /* Méthode de filtrage par publisher */
 
     public JSONArray getCharactersBy(String str_publisher, JSONArray results) {
 

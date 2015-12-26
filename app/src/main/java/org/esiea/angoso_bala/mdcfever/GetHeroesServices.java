@@ -16,32 +16,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * An {@link IntentService} subclass for handling asynchronous task requests in
- * a service on a separate handler thread.
- * <p/>
- * TODO: Customize class - update intent actions, extra parameters and static
- * helper methods.
- */
+
 public class GetHeroesServices extends IntentService {
     public static final String TAG = "GetHeroesServices";
 
-    // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
     private static final String ACTION_GET_ALL_HEROES = "org.esiea.angoso_bala.mdcfever.action.heroes";
-
-    // TODO: Rename parameters
-
 
     public GetHeroesServices() {
         super("GetHeroesServices");
     }
-
-    /**
-     * Starts this service to perform action Foo with the given parameters. If
-     * the service is already performing a task this action will be queued.
-     *
-     * @see IntentService
-     */
 
     public static void startActionHeroes(Context context) {
         Intent intent = new Intent(context, GetHeroesServices.class);
@@ -49,13 +32,6 @@ public class GetHeroesServices extends IntentService {
         context.startService(intent);
     }
 
-    /**
-     * Starts this service to perform action Baz with the given parameters. If
-     * the service is already performing a task this action will be queued.
-     *
-     * @see IntentService
-     */
-    // TODO: Customize helper method
     public static void startActionBaz(Context context) {
         Intent intent = new Intent(context, GetHeroesServices.class);
         context.startService(intent);
@@ -87,6 +63,8 @@ public class GetHeroesServices extends IntentService {
             e.printStackTrace();
         }
     }
+
+    /* Méthode de récupération des données de l'API rest*/
 
     private void handleActionHeroes() {
         Log.d(TAG, "Thread:" + Thread.currentThread().getName());

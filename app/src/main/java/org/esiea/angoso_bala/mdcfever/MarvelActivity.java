@@ -39,6 +39,8 @@ public class MarvelActivity extends AppCompatActivity {
 
     public String comics;
 
+    /* Getters et setters du recyclerview */
+
     public RecyclerView getRv_heroes() {
         return rv_heroes;
     }
@@ -52,46 +54,34 @@ public class MarvelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        /* On lance le téléchargement */
+
         GetHeroesServices.startActionHeroes(context);
 
         setContentView(R.layout.activity_second);
+
+        /* Barre de titre */
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        /* Gestion de la réception */
 
         IntentFilter intentFilter = new IntentFilter(HEROES_UPDATE);
         LocalBroadcastManager.getInstance(this).registerReceiver(new HeroesUpdate(), intentFilter);
 
+        /* Gestion du recyclerview */
+
         rv_heroes = (RecyclerView) findViewById(R.id.rv_heroes);
         rv_heroes.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        /* On crée un JSONArray à partir du fichier */
 
         JSONArray heroes = getHeroesFromFile();
 
         HeroesAdapter ba = new HeroesAdapter(heroes);
         rv_heroes.setAdapter(ba);
     }
-
-
-
-
-    /*@Override
-    public void onClick(View v) {
-        // define the button that invoked the listener by id
-        switch (v.getId()) {
-            case R.id.b_dc:
-                // ОК button
-                Toast.makeText(MarvelActivity.this,
-                        "Yes!", Toast.LENGTH_SHORT).show();
-                comics = "DC Comics";
-                break;
-            case R.id.b_marvel:
-                // Cancel button
-                Toast.makeText(MarvelActivity.this,
-                        "No!", Toast.LENGTH_SHORT).show();
-                comics = "Marvel";
-                break;
-        }
-    }*/
-
 
     public JSONArray getHeroesFromFile() {
         String json = null;
@@ -106,6 +96,8 @@ public class MarvelActivity extends AppCompatActivity {
             JSONObject obj = new JSONObject(json);
             JSONArray results = obj.getJSONArray("results");
 
+            /* Nous filtrons les résultats non pas depuis le site, mais en JAVA : on ne garde que Marvel */
+
             JSONArray results_filtered = getCharactersBy("Marvel", results);
 
             return results_filtered;
@@ -119,6 +111,8 @@ public class MarvelActivity extends AppCompatActivity {
         }
 
     }
+
+    /* Méthode de filtrage par publisher */
 
     public JSONArray getCharactersBy(String str_publisher, JSONArray results) {
         JSONArray array_filtered = new JSONArray();
